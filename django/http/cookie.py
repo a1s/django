@@ -55,6 +55,9 @@ else:
                     self.bad_cookies.add(key)
                     dict.__setitem__(self, key, http_cookies.Morsel())
 
+# Add support for the SameSite attribute (obsolete when PY37 is unsupported).
+cookies.Morsel._reserved.setdefault('samesite', 'SameSite')
+
 
 def parse_cookie(cookie):
     """
